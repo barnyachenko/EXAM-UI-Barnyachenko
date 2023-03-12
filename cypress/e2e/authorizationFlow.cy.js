@@ -1,21 +1,37 @@
 ///<reference types="cypress"/>
+// import * as user from '../fixtures/user.json';
+import LogInPage from '../support/PageObjects/LogInPage';
+import SignUpPage from '../support/PageObjects/SignUpPage';
+import { closePopup } from '../support/helper';
+import { faker } from '@faker-js/faker';
 
-// it('Authorization', () => {
+let user = {};
+user.email = faker.internet.email();
+user.password = faker.internet.password(10, true, /[A-Za-z0-9`!`]/, 'Hello1 ');
+user.answer = faker.datatype.string(5)
 
-//     cy.log('Open login page');
-//     cy.visit('/login');
+it('Precondition. User register', () => {
+    SignUpPage.visit();
+    closePopup();
+    SignUpPage.submitSignUpForm(user);
+})
 
-//     cy.log('Check user is unauthorized');
-//     cy.getCookie('customer').should('be.null');
+it('Authorization without Remember me', () => {
 
-//     cy.log('Authorize user');
-//     cy.get('#email').type(user.username);
-//     cy.get('#password').type(user.password);
+//    LogInPage.checkUserUnauthorized();
+    LogInPage.visit();
+    closePopup();
+    LogInPage.submitLoginForm(user);
 
-//     cy.get('#loginButton"]').click();
+})
+
+// it('Authorization with Remember me', () => {
+
+//     LogInPage.checkUserUnauthorized();
+//     LogInPage.visit();
+//     closePopup();
+//     LogInPage.enableRememberMe();
+//     LogInPage.submitLoginForm(user);
+
 
 // })
-
-
-// cy.log('Verify user email on log in page');
-// cy.get('#email', {timeout: 20000}).should('contain', user.email);

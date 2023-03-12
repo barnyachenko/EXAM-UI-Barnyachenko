@@ -46,9 +46,3 @@ it('Registration', () => {
 
 
 
-// function deleteUser (id) {
-//     cy.request('DELETE', '/api/Users/')
-//   }
-
-
-
