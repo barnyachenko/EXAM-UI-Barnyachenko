@@ -22,7 +22,7 @@ class ForgotPasswordPage {
     }
 
     getPasswordAdvices(){
-        return cy.get('#mat-slide-toggle-1-input');
+        return cy.get('#mat-slide-toggle-1');
     }
 
     getResetButton(){
@@ -35,9 +35,9 @@ class ForgotPasswordPage {
         this.getEmailInput().type(user.email);
         this.getSecurityAnswer().type(user.answer);
         this.getPasswordAdvices().click();
-        this.getNewPasswordInput().type();
-        this.getNewPasswordRepeatInput().type();
-        this.getLoginButton().click()
+        this.getNewPasswordInput().type(user.newPassword);
+        this.getNewPasswordRepeatInput().type(user.newPassword);
+        this.getResetButton().click()
         
     }
 

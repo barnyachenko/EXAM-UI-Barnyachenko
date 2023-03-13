@@ -18,17 +18,25 @@ class LoginPage {
     }
 
     getRememberMe(){
-        return cy.get('#rememberMe-input')
+        return cy.get('#rememberMe')
+    }
+
+    getForgotPassword(){
+        return cy.get('.primary-link.forgot-pw')
     }
 
     checkUserUnauthorized(){
-        cy.log('Verify user is unauthorized');
-        window.localStorage('token').should('be.null');
-        cy.log('User is unauthorized ✅');
+        cy.log('Verify user is unauthorized')
+        expect(localStorage.getItem('token')).to.be.null
+        cy.log('User is unauthorized ✅')
     }
 
-    enableRememberMe(){
-        this.getRememberMe().click()
+    checkUserAuthorized(user){
+        cy.log('Verify user is authorized')
+        cy.visit('/#/search')
+        cy.get('#navbarAccount').click()
+        cy.get('#mat-menu-panel-0').should('contain', user.email)
+        cy.log('User is authorized ✅')
     }
 
     submitLoginForm(user){
@@ -36,8 +44,8 @@ class LoginPage {
 
         this.getEmailInput().type(user.email)
         this.getPasswordInput().type(user.password)
+        this.getRememberMe().click()
         this.getLoginButton().click()
-        
     }
 
 }
