@@ -45,7 +45,7 @@ class SignUpPage {
         this.getRepeatPassword().type(user.password);
         this.getSecurityQuestion().click();
         this.selectSecurityQuestion().click();
-        this.getAnswer().type(user.answer)
+        this.getAnswer().type(user.answer);
         this.getRegisterButton().click()
     }
 

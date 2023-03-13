@@ -9,7 +9,7 @@ user.email = faker.internet.email()
 user.password = faker.internet.password(10, true, /[A-Za-z0-9`!`]/, 'Hello1 ')
 user.answer = faker.datatype.string(5)
 
-it('Precondition. User register', () => {
+it('Precondition. User registration', () => {
     SignUpPage.visit()
     closePopup()
     SignUpPage.submitSignUpForm(user)

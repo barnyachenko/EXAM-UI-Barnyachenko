@@ -11,13 +11,13 @@ user.password = faker.internet.password(10, true, /[A-Za-z0-9`!`]/, 'Hello1 ')
 user.answer = faker.datatype.string(5)
 user.newPassword = "NewPassword!"
 
-it('Precondition. User register', () => {
+it('Precondition. User registration', () => {
     SignUpPage.visit()
     closePopup()
     SignUpPage.submitSignUpForm(user)
 })
 
-it('Authorization', () => {
+it('User authorization with old password', () => {
     LogInPage.checkUserUnauthorized()
     LogInPage.visit()
     closePopup()
@@ -27,7 +27,7 @@ it('Authorization', () => {
 
 })
 
-it('Forgot password', () => {
+it('Trying to reset password', () => {
     ForgotPasswordPage.visit()
     closePopup()
     ForgotPasswordPage.submitChangeForm(user)

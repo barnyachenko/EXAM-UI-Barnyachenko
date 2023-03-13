@@ -7,7 +7,7 @@ let feedback = {}
 feedback.comment = faker.datatype.string(5);
 feedback.rating = faker.datatype.number(1,5);
 
-it('Trying to send 4-star rating feedback', () => {
+it('Trying to send a feedback', () => {
     cy.intercept('/rest/captcha/', (req) => {
         req.continue((res) => {
             CustomerFeedbackPage.getResultInput().type(res.body.answer);
