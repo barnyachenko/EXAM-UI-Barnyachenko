@@ -31,8 +31,10 @@ class ForgotPasswordPage {
 
     submitChangeForm(user){
         cy.log('Trying to change password via Forgot Password flow');
+        cy.intercept('GET', '/rest/user/security-question?**').as('question')
 
         this.getEmailInput().type(user.email);
+        cy.wait('@question');
         this.getSecurityAnswer().type(user.answer);
         this.getPasswordAdvices().click();
         this.getNewPasswordInput().type(user.newPassword);
