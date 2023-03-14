@@ -7,32 +7,32 @@ import { closePopup } from '../support/helper';
 let user = {};
 user.email = faker.internet.email();
 user.password = faker.internet.password(10, true, /[A-Za-z0-9`!`]/, 'Hello1 ');
-user.answer = faker.datatype.string(5)
+user.answer = faker.datatype.string(5);
 
 it('Registration', () => {
-    SignUpPage.visit()
-    closePopup()
-    SignUpPage.submitSignUpForm(user)
+    SignUpPage.visit();
+    closePopup();
+    SignUpPage.submitSignUpForm(user);
 })
 
 it('Fields validations check', () => {
-    SignUpPage.visit()
-    closePopup()
-    SignUpPage.getEmailInput().focus().blur()
-    SignUpPage.getPasswordInput().focus().blur()
-    SignUpPage.getRepeatPassword().focus().blur()
-    SignUpPage.getSecurityQuestion().focus().blur()
-    SignUpPage.getAnswer().focus().blur()
-    cy.log('Check email field validation')
-    cy.get('#mat-error-0').should("be.visible")
-    cy.log('Check password field validation')
-    cy.get('#mat-error-1').should("be.visible")
-    cy.log('Check repeat password field validation')
-    cy.get('#mat-error-2').should("be.visible")
-    cy.log('Check security question field validation')
-    cy.get('#mat-error-3').should("be.visible")
-    cy.log('Check security answer field validation')
-    cy.get('#mat-error-4').should("be.visible")
+    SignUpPage.visit();
+    closePopup();
+    SignUpPage.getEmailInput().focus().blur();
+    SignUpPage.getPasswordInput().focus().blur();
+    SignUpPage.getRepeatPassword().focus().blur();
+    SignUpPage.getSecurityQuestion().focus().blur();
+    SignUpPage.getAnswer().focus().blur();
+    cy.log('Check email field validation');
+    cy.get('#mat-error-0').should("be.visible");
+    cy.log('Check password field validation');
+    cy.get('#mat-error-1').should("be.visible");
+    cy.log('Check repeat password field validation');
+    cy.get('#mat-error-2').should("be.visible");
+    cy.log('Check security question field validation');
+    cy.get('#mat-error-3').should("be.visible");
+    cy.log('Check security answer field validation');
+    cy.get('#mat-error-4').should("be.visible");
 })
 
 

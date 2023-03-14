@@ -5,7 +5,7 @@ import { closePopup } from '../support/helper';
 
 let feedback = {}
 feedback.comment = faker.datatype.string(5);
-feedback.rating = faker.datatype.number(1,5);
+feedback.rating = faker.datatype.number({ min: 1, max: 5});
 
 it('Trying to send a feedback', () => {
     cy.intercept('/rest/captcha/', (req) => {
@@ -18,7 +18,8 @@ it('Trying to send a feedback', () => {
     closePopup();
     cy.wait('@Captcha');
     CustomerFeedbackPage.getCommentInput().type(feedback.comment);
-    CustomerFeedbackPage.getRating().type("{rightarrow}");
+    CustomerFeedbackPage.getRating().click().invoke('val', feedback.rating).trigger('change');
+    //.type("{rightarrow}");
     //.invoke('val', 4).trigger('change')
     CustomerFeedbackPage.getSubmitButton().click()
 

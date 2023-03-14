@@ -29,7 +29,7 @@ class CustomerFeedbackPage {
         cy.log('Trying to send feedback');
 
         this.getCommentInput().type(feedback.comment);
-        this.getRating().click(feedback.rating);
+        this.getRating().click().invoke('val', feedback.rating).trigger('change');
         this.getResultInput().type();
         this.getSubmitButton().click()
     }

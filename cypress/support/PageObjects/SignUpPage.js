@@ -6,38 +6,40 @@ class SignUpPage {
     }
 
     getEmailInput(){
-        return cy.get('#emailControl')
+        return cy.get('#emailControl');
     }
 
     getPasswordInput(){
-        return cy.get('#passwordControl')
+        return cy.get('#passwordControl');
     }
 
     getRepeatPassword(){
-        return cy.get('#repeatPasswordControl')
+        return cy.get('#repeatPasswordControl');
     }
 
     getPasswordAdvices(){
-        return cy.get('#mat-slide-toggle-1')
+        return cy.get('#mat-slide-toggle-1');
     }
+
     getSecurityQuestion(){
-        return cy.get('#mat-select-0')
+        return cy.get('#mat-select-0');
     }
 
     selectSecurityQuestion(){
-        return cy.get('#mat-option-7')
+        return cy.get('#mat-option-7');
     }
 
     getAnswer(){
-        return cy.get('#securityAnswerControl')
+        return cy.get('#securityAnswerControl');
     }
 
     getRegisterButton(){
-        return cy.get('#registerButton')
+        return cy.get('#registerButton');
     }
 
     submitSignUpForm(user){
-        cy.log('Sign up user')
+
+        cy.log('Sign up user');
 
         this.getEmailInput().type(user.email);
         this.getPasswordAdvices().click();
@@ -46,7 +48,8 @@ class SignUpPage {
         this.getSecurityQuestion().click();
         this.selectSecurityQuestion().click();
         this.getAnswer().type(user.answer);
-        this.getRegisterButton().click()
+        this.getRegisterButton().click();
+
     }
 
 }
